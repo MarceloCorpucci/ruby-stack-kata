@@ -8,3 +8,8 @@ Feature: Create blog entry
 			See you!
 			"""
 		Then the message "Entry 'New entry' created successfully." should appear
+
+	Scenario: Logged in user creates a blank blog entry
+		Given I have logged in with my credentials "admin1@gmail.com" and "admin1"
+		When I create a blog entry with the title "New entry" and text ""
+		Then the message "This field is required." should appear near to the text

@@ -8,7 +8,10 @@ Before do
   configure_default_driver
 end
 
-After do
-  delete_entry
+After do |scenario|
+  if scenario.name == "Logged in user creates a blog entry"
+    delete_entry
+  end
+  
   @driver.quit
 end

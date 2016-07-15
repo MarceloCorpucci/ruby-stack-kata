@@ -11,7 +11,6 @@ When(/^I create a blog entry with the title "([^"]*)" and text$/) do |arg1, stri
   @driver.find_element(:id, 'create_post').click
   @driver.find_element(:id, 'title').send_keys arg1
   @driver.find_element(:id, 'body').send_keys string
-  @driver.find_element(:id, 'tags').send_keys "abc"
   @driver.find_element(:id, 'post').click
 end
 
@@ -20,4 +19,16 @@ Then(/^the message "([^"]*)" should appear$/) do |arg1|
   wait.until { @driver.find_element(:id => 'notification').displayed? }
 
   expect(@driver.find_element(:id, 'notification').text).to include(arg1)
+end
+
+
+When(/^I create a blog entry with the title "([^"]*)" and text "([^"]*)"$/) do |arg1, arg2|
+  @driver.find_element(:id, 'create_post').click
+  @driver.find_element(:id, 'title').send_keys arg1
+  @driver.find_element(:id, 'body').send_keys arg2
+  @driver.find_element(:id, 'post').click
+end
+
+Then(/^the message "([^"]*)" should appear near to the text$/) do |arg1|
+  expect(@driver.find_element(:class, 'help-block').text).to include(arg1)
 end
