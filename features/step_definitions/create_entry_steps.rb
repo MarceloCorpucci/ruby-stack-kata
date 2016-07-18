@@ -29,6 +29,6 @@ When(/^I create a blog entry with the title "([^"]*)" and text "([^"]*)"$/) do |
   @driver.find_element(:id, 'post').click
 end
 
-Then(/^the message "([^"]*)" should appear near to the text$/) do |arg1|
+Then(/^the message "([^"]*)" should appear referring to the field$/) do |arg1|
   expect(@driver.find_element(:class, 'help-block').text).to include(arg1)
 end
