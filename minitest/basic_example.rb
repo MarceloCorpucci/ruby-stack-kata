@@ -17,7 +17,7 @@ class TestBlog < Minitest::Test
   end
 
   def test_that_logged_in_user_is_able_to_post
-    @driver.navigate.to "https://effective-testing.herokuapp.com/"
+    @driver.navigate.to "localhost:5000/"
     
     @driver.find_element(:id, 'login').click
     @driver.find_element(:id, 'email').send_keys "admin1@gmail.com"

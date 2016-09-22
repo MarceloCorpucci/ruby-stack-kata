@@ -1,5 +1,5 @@
 Given(/^I have logged in with my credentials "([^"]*)" and "([^"]*)"$/) do |arg1, arg2|
-  @driver.navigate.to "https://effective-testing.herokuapp.com/"
+  @driver.navigate.to "localhost:5000"
     
   @driver.find_element(:id, 'login').click
   @driver.find_element(:id, 'email').send_keys arg1
